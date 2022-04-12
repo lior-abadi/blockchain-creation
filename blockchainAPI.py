@@ -3,7 +3,7 @@ from flask_ngrok import run_with_ngrok
 from blockchain import Blockchain
 
 app = Flask(__name__)
-run_with_ngrok(app)
+# run_with_ngrok(app)
 
 app.config["JSONIFY_PRETTYPRINT_REGULAR"] = True
 
@@ -12,8 +12,10 @@ blockchain = Blockchain()
 @app.route("/mine_block", methods=["GET"])
 def mine_block():
     
-    previous_block = blockchain.get_previous_block()
+    previous_block = blockchain.get_previous_block()    
     previous_proof = previous_block["proof"]
+    
+    
     
     proof = blockchain.proof_of_work(previous_proof)
     previous_hash = blockchain.blockHash(previous_block)
@@ -53,5 +55,5 @@ def is_valid():
     return jsonify(response), 200
 
 
-# app.run(host = "localhost", port = 3001) (need to coment flask_ngrok also)
-app.run()
+app.run(host = "localhost", port = 3001) # (need to coment flask_ngrok also)
+# app.run()
