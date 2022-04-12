@@ -2,9 +2,6 @@
 import datetime
 import hashlib
 import json
-import flask
-import flask_ngrok
-
 
 # Creation of Blockchain class. It should allow:
 #   Create new blocks and generate their hashes
